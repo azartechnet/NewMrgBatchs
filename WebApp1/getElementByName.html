@@ -1,0 +1,13 @@
+<body>
+    <label>EmployeeId</label>
+    <input type="text" name="empid">
+    <label>EmployeeName</label>
+    <input type="text" name="empname">
+    <input type="submit" value="submit">
+</body>
+<script>
+    var empid=parseInt(prompt("Enter the EmployeeId::"))
+    var empname=prompt("Enter the employeeName")
+    document.getElementsByName("empid")[0].value=empid;
+    document.getElementsByName("empname")[0].value=empname;
+</script>
