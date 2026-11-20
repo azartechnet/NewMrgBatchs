@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <h2>StudentDetails</h2>
+        <input type="text" id="name"/>
+        <button onclick="saveName()">Save</button>
+        <button onclick="displayName()">Display</button>
+        <h3 id="result"></h3>
+        <script>
+            function saveName()
+            {
+                let name=document.getElementById("name").value;
+                localStorage.setItem("studentName",name);
+                alert("Name Saved Success!!");
+            }
+            function displayName()
+            {
+                let name=localStorage.getItem("studentName");
+
+                document.getElementById("result").innerHTML=name;
+            }
+        </script>
+    </body>
+</html>

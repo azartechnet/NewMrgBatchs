@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <h2>StudentJSON Storage</h2>
+        <button onclick="displayStudent()">Display</button>
+        <h3 id="result"></h3>
+        <script>
+            function saveStudent()
+            {
+                let student={
+                    id:101,
+                    name:"Arun",
+                    department:"Computer Science",
+                    mark:90
+                };
+                localStorage.setItem("student",JSON.stringify(student))
+            }
+            function displayStudent()
+            {
+                let data=localStorage.getItem("student");
+                let student=JSON.parse(data);
+                document.getElementById("result").innerHTML="ID:"+student.id+"<br>"+"Name:"+student.name+"<br>"
+                +"Departement:"+student.department+"<br>"+"Mark:"+student.mark;
+            }
+        </script>
+    </body>
+</html>
