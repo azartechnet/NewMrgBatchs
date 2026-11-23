@@ -1,0 +1,60 @@
+<body>
+    <h2>StudentManagement</h2>
+    <input type="text" id="name"/>
+    <input type="text" id="dept"/>
+    <button onclick="addStudent()">AddStudent</button>
+</body>
+<table border="1" cellpadding="10">
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Departement</th>
+        <th>Action</th>
+    </tr>
+</thead>
+<tbody id="result"></tbody>
+</table>
+<script>
+    let students=JSON.parse(localStorage.getItem("students"))||[];
+    function displayStudents()
+    {
+        let output="";
+        students.forEach((s,index)=>{
+            output +=`
+            <tr>
+                <td>${s.name}</td>
+                <td>${s.dept}</td>
+                <td>
+                    <button onclick="deleteStudent(${index})">Delete</button>
+                </td>
+            </tr>`;
+        });
+    
+    document.getElementById("result").innerHTML=output;
+    }
+
+function addStudent()
+{
+    let name=document.getElementById("name").value;
+    let dept=document.getElementById("dept").value;
+
+    if(!name||!dept)
+{
+    alert("Enter the all details");
+    return;
+}
+students.push({name,dept});
+localStorage.setItem("students",JSON.stringify(students));
+displayStudents();
+document.getElementById("name").value="";
+document.getElementById("dept").value="";
+}
+function deleteStudent(index)
+{
+    students.splice(index,1);
+    localStorage.setItem("students",JSON.stringify(students));
+    displayStudents();
+}
+
+</script>
+
